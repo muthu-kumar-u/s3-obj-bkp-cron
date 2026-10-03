@@ -1,0 +1,10 @@
+[Unit]
+Description=Encrypted application backup
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=oneshot
+User=root
+UMask=0077
+ExecStart=/bin/sh /opt/object-storage-backup-starter/scripts/backup.sh /etc/application-backup/backup.env
+TimeoutStartSec=2h
